@@ -1,0 +1,44 @@
+virtual machine menus:
+*1) To reset password in azure:
+   
+   step1:  connect via serial console (at end write rd.break selinux=1)
+   step2:  ctrl+x
+   stpe3:  mount -o remount /sysroot
+   step4:  chroot /sysroot
+           sh-4.2 #passwd
+   step5:  enter password
+           rewrite password
+		   exit
+		   
+--In reset password tab we reset 'password', 'reset ssh public key' and 'configuration only'
+--------------------------------------------------------------------------------------------------------------
+*2)run command : to exicute any shell script or any command without login we use run command in console. 
+-------------------------------------------------------------------------------------------------------------------
+* to create openssl  certificate:-	
+	
+	openssl genrsa -out domainname.key 2048
+	openssl req -new -key domainname.key -out domainname.csr
+	openssl x509 -req -days 365 -in domainname.csr -signkey domainname.key -out domainname.crt
+	-----------------
+pfx:-	
+	openssl pkcs12 -export -out rbante.cloudns.cl.pfx -inkey rbante.cloudns.cl.key -in rbante.cloudns.cl.crt
+	-------------------
+pem:
+	
+1)	openssl pkcs12 -in rbante.cloudns.cl.pfx -out rbante.cloudns.cl.crt -nokeys -clcerts
+2)	openssl x509 -inform pem -in rbante.cloudns.cl.crt -outform der -out rbante.cloudns.cl.cer
+--------------------------------------------------------------------------------------------------------------------------------
+*     to create mysql user and grant permissions:											
+eg:											
+mysqldump -h neomysql.mysql.database.azure.com -u aalhad@neomysql -p wordpress > wordpress.sql								----to create database backup			database name: wordpress
+mysql -h neomysql.mysql.database.azure.com -u aalhad@neomysql -p wordpress < wordpress.sql								----migrate backup to datbase			
+* php packeges:											
+											
+php-fpm php-gd php-json php-mbstring php-mysqlnd php-xml php-xmlrpc php-opcache											
+											
+* to create mysql user and grant permissions:											
+											
+CREATE USER 'wpuser'@'%' IDENTIFIED BY 'xyz56v1j@5';											
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'%';											
+
+-----------------------------------------------------------------------------------------------------------------------------------

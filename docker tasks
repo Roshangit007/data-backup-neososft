@@ -1,0 +1,15 @@
+For Docker (Install Docker on your machine, Create one docker File than build it, after build Push it to Docker Hub{Create one account on Docker hub})
+
+docker build ,docker run, docker push, docker ps command, docker run command
+
+Pull any image from docker hub(docker pull than run it as a container)
+
+
+todays tasks:
+ Installation docker
+ created dockerfile
+ build dockerfile
+ created dockerhub account and repository
+ and push docker images on dockerhub
+ using docker image created docker container with port 80
+ and check the container state using docker ps command
